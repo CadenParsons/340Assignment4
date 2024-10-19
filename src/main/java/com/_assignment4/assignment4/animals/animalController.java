@@ -15,8 +15,8 @@ public class animalController {
     @GetMapping("/all")
     public List<animal> getAllAnimals(){return service.getAllAnimals();}
 
-    @GetMapping("/{animalid}")
-    public animal findAnimalById(@PathVariable int animalid) {return service.findAnimalByID(animalid);}
+    @GetMapping("/{id}")
+    public animal findAnimalById(@PathVariable int id) {return service.findAnimalByID(id);}
 
     @GetMapping("")
     public List<animal> getAnimalsByScientificName(@RequestParam(name = "scientificName", defaultValue = "null") String scientificName){
@@ -35,13 +35,13 @@ public class animalController {
    }
 
    @PutMapping("/update/{animalid}")
-    public animal updateAnimal(@PathVariable int animalid, @RequestBody animal animal){
-        service.updateAnimal(animalid, animal);
-        return service.findAnimalByID(animalid);
+    public animal updateAnimal(@PathVariable int id, @RequestBody animal animal){
+        service.updateAnimal(id, animal);
+        return service.findAnimalByID(id);
    }
    @DeleteMapping("/delete/{animalid}")
-    public List<animal> deleteAnimalbyId(@PathVariable int animalid){
-        service.deleteAnimalById(animalid);
+    public List<animal> deleteAnimalbyId(@PathVariable int id){
+        service.deleteAnimalById(id);
         return service.getAllAnimals();
    }
 

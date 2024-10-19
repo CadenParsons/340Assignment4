@@ -8,7 +8,7 @@ public class animal {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private int animalid;
+    private int id;
 
     @Column(nullable = false)
     private String name;
@@ -25,7 +25,7 @@ public class animal {
     private String description;
 
     public animal(int animalid, String name, String scientificName, String species, String habitat, String description){
-        this.animalid = animalid;
+        this.id = id;
         this.name = name;
         this.scientificName = scientificName;
         this.species = species;
@@ -44,9 +44,9 @@ public class animal {
 
     }
 
-    public int getAnimalID(){ return animalid;}
+    public int getAnimalID(){ return id;}
 
-    public void setAnimalid(int animalid) {this.animalid = animalid;}
+    public void setAnimalid(int animalid) {this.id = id;}
 
     public String getName(){ return name;}
 

@@ -17,8 +17,8 @@ public class AnimalService {
         return animalRepository.findAll();
     }
 
-    public animal findAnimalByID(int animalid) {
-        Optional<animal> animal = animalRepository.findAnimalByID(animalid);
+    public animal findAnimalByID(int id) {
+        Optional<animal> animal = animalRepository.findAnimalByID(id);
         return animal.orElse(null);
     }
 
@@ -34,10 +34,9 @@ public class AnimalService {
         animalRepository.save(animal);
     }
 
-    public void updateAnimal(int animalid, animal animal) {
-       animal existing = findAnimalByID(animalid);
+    public void updateAnimal(int id, animal animal) {
+       animal existing = findAnimalByID(id);
        if (existing != null){
-
            existing.setName(animal.getName());
            existing.setScientificName(animal.getScientificName());
            existing.setSpecies(animal.getSpecies());
@@ -49,8 +48,8 @@ public class AnimalService {
 
     }
 
-    public void deleteAnimalById(int animalid) {
-        animalRepository.deleteAnimalById(animalid);
+    public void deleteAnimalById(int id) {
+        animalRepository.deleteAnimalById(id);
     }
 }
 
