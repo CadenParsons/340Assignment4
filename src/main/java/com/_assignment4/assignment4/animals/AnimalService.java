@@ -17,7 +17,7 @@ public class AnimalService {
         return animalRepository.findAll();
     }
 
-    public animal findAnimalbyID(int animalid) {
+    public animal findAnimalByID(int animalid) {
         Optional<animal> animal = animalRepository.findAnimalByID(animalid);
         return animal.orElse(null);
     }
@@ -35,8 +35,9 @@ public class AnimalService {
     }
 
     public void updateAnimal(int animalid, animal animal) {
-       animal existing = findAnimalbyID(animalid);
+       animal existing = findAnimalByID(animalid);
        if (existing != null){
+
            existing.setName(animal.getName());
            existing.setScientificName(animal.getScientificName());
            existing.setSpecies(animal.getSpecies());

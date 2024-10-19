@@ -44,7 +44,7 @@ public class animal {
 
     }
 
-    public int findAnimalByID(){ return animalid;}
+    public int getAnimalID(){ return animalid;}
 
     public void setAnimalid(int animalid) {this.animalid = animalid;}
 
