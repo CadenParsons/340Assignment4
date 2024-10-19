@@ -11,12 +11,13 @@ import java.util.Optional;
 @Repository
 public interface AnimalRepository extends JpaRepository<animal, Integer>{
 
-    List<animal> getAnimalsByScientificName(String scientficName);
+    List<animal> getAnimalsByScientificName(String scientificName);
 
-    @Query(value = "Select * from animals s who are part of the same species", nativeQuery = true)
+    @Query(value = "SELECT * FROM animals WHERE species = :species", nativeQuery = true)
     List<animal> getAnimalsofSameSpecies(String species);
 
     void deleteAnimalById(int animalid);
 
-    Optional<animal> getAnimalbyID(int animalid);
+    @Query(value = "SELECT * FROM animals WHERE id = :animalid",nativeQuery = true)
+    Optional<animal> findAnimalByID(int animalid);
 }

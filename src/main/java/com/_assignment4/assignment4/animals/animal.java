@@ -6,14 +6,15 @@ import jakarta.persistence.*;
 @Table(name = "animals")
 public class animal {
 
-    @Id@GeneratedValue(strategy = GenerationType.AUTO)
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private int animalid;
 
     @Column(nullable = false)
     private String name;
 
 
-    private String scientficName;
+    private String scientificName;
 
     @Column(nullable = false)
     private String species;
@@ -23,27 +24,27 @@ public class animal {
 
     private String description;
 
-    public animal(int animalid, String name, String scientficName, String species, String habitat, String description){
+    public animal(int animalid, String name, String scientificName, String species, String habitat, String description){
         this.animalid = animalid;
         this.name = name;
-        this.scientficName = scientficName;
+        this.scientificName = scientificName;
         this.species = species;
         this.habitat = habitat;
         this.description = description;
     }
 
-    public animal(String name, String species, String habitat, String scientficName, String description){
+    public animal(String name, String species, String habitat, String scientificName, String description){
         this.name = name;
         this.description = description;
         this.habitat = habitat;
         this.species = species;
-        this.scientficName = scientficName;
+        this.scientificName = scientificName;
     }
     public animal(){
 
     }
 
-    public int getAnimalid(){ return animalid;}
+    public int findAnimalByID(){ return animalid;}
 
     public void setAnimalid(int animalid) {this.animalid = animalid;}
 
@@ -51,9 +52,9 @@ public class animal {
 
     public void setName(String name){ this.name = name;}
 
-    public String getScientificName(){ return scientficName;}
+    public String getScientificName(){ return scientificName;}
 
-    public void setScientificName(String scientficName) { this.scientficName = scientficName;}
+    public void setScientificName(String scientificName) { this.scientificName = scientificName;}
 
     public String getSpecies(){return species;}
 
@@ -65,7 +66,5 @@ public class animal {
 
     public String getDescription(){return description;}
 
-    public void setDescription(String description) {
-        this.description = description;
-    }
+    public void setDescription(String description){this.description = description;}
 }
