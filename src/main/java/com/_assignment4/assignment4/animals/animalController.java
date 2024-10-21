@@ -34,12 +34,12 @@ public class animalController {
         return service.getAllAnimals();
    }
 
-   @PutMapping("/update/{animalid}")
+   @PutMapping("/update/{id}")
     public animal updateAnimal(@PathVariable int id, @RequestBody animal animal){
         service.updateAnimal(id, animal);
         return service.findAnimalByID(id);
    }
-   @DeleteMapping("/delete/{animalid}")
+   @DeleteMapping("/delete/{id}")
     public List<animal> deleteAnimalbyId(@PathVariable int id){
         service.deleteAnimalById(id);
         return service.getAllAnimals();
