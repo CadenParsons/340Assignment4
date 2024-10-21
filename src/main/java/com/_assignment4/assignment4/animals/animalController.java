@@ -18,7 +18,7 @@ public class animalController {
     @GetMapping("/{id}")
     public animal findAnimalById(@PathVariable int id) {return service.findAnimalByID(id);}
 
-    @GetMapping("")
+    @GetMapping("/sciname")
     public List<animal> getAnimalsByScientificName(@RequestParam(name = "scientificName", defaultValue = "null") String scientificName){
         return service.getAnimalsByScientificName(scientificName);
     }
