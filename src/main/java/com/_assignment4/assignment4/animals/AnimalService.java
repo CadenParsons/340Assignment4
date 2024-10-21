@@ -22,8 +22,8 @@ public class AnimalService {
         return animal.orElse(null);
     }
 
-    public List<animal> getAnimalsByScientificName(String scientficName) {
-        return animalRepository.getAnimalsByScientificName(scientficName);
+    public List<animal> getAnimalsByScientificName(String scientificName) {
+        return animalRepository.getAnimalsByScientificName(scientificName);
     }
 
     public List<animal> getAnimalsofSameSpecies(String species) {

@@ -46,7 +46,7 @@ public class animal {
 
     public int getAnimalID(){ return id;}
 
-    public void setAnimalid(int animalid) {this.id = id;}
+    public void setAnimalid(int id) {this.id = id;}
 
     public String getName(){ return name;}
 
