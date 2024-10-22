@@ -2,10 +2,12 @@ package com._assignment4.assignment4.animals;
 
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.ui.Model;
 
 import java.util.List;
-@RestController
+@Controller
 @RequestMapping("/animals")
 public class animalController {
 
@@ -13,19 +15,22 @@ public class animalController {
     private AnimalService service;
 
     @GetMapping("/all")
-    public List<animal> getAllAnimals(){return service.getAllAnimals();}
+    public String getAllAnimals(Model model){
+        model.addAttribute("animalList", service.getAllAnimals());
+        model.addAttribute("title", "All Animals");
+        return "animal-list";}
 
     @GetMapping("/{id}")
-    public animal findAnimalById(@PathVariable int id) {return service.findAnimalByID(id);}
-
-    @GetMapping("/sciname")
-    public List<animal> getAnimalsByScientificName(@RequestParam(name = "scientificName", defaultValue = "null") String scientificName){
-        return service.getAnimalsByScientificName(scientificName);
-    }
+    public String findAnimalById(@PathVariable int id, Model model) {
+        model.addAttribute("animal", service.findAnimalByID(id));
+        model.addAttribute("title", id);
+        return "animal-details";}
 
     @GetMapping("/species")
-    public List<animal> getAnimalsofSameSpecies (@RequestParam(name = "species", defaultValue = "null") String species){
-    return service.getAnimalsofSameSpecies(species);
+    public String getAnimalsofSameSpecies (@RequestParam(name = "species", defaultValue = "null")String species, Model model){
+        model.addAttribute("Species", service.getAnimalsofSameSpecies(species));
+        model.addAttribute("Title", "Animals of species: "+species);
+        return "animal-list";
     }
 
    @PostMapping("/new")
