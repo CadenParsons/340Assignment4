@@ -27,28 +27,35 @@ public class animalController {
         return "animal-details";}
 
     @GetMapping("/species")
-    public String getAnimalsofSameSpecies (@RequestParam(name = "species", defaultValue = "null")String species, Model model){
-        model.addAttribute("Species", service.getAnimalsofSameSpecies(species));
-        model.addAttribute("Title", "Animals of species: "+species);
-        return "animal-list";
+    public List<animal> getAnimalsofSameSpecies (@RequestParam(name = "species", defaultValue = "null")String species, Model model){
+        return service.getAnimalsofSameSpecies(species);
+    }
+    @GetMapping("/createForm")
+    public String showCreateForm(){
+        return "animal-create";
     }
 
    @PostMapping("/new")
-    public List<animal> addNewAnimal(@RequestBody animal animal) {
+    public String addNewAnimal( animal animal) {
         service.addNewAnimal(animal);
-        return service.getAllAnimals();
+        return "redirect:/animals/all";
+   }
+    @GetMapping("/update/{id}")
+   public String showUpdateForm(@PathVariable int id, Model model){
+        model.addAttribute("animal", service.findAnimalByID(id));
+        return "animal-update";
    }
 
-   @PutMapping("/update/{id}")
-    public animal updateAnimal(@PathVariable int id, @RequestBody animal animal){
-        service.updateAnimal(id, animal);
-        return service.findAnimalByID(id);
+   @PostMapping("/update")
+    public String updateAnimal(animal animal){
+       service.addNewAnimal(animal);
+        return "redirect:/animals/" + animal.getId();
    }
-   @DeleteMapping("/delete/{id}")
-    public List<animal> deleteAnimalbyId(@PathVariable int id){
+    @PostMapping("/delete/{id}")
+    public String deleteAnimalById(@PathVariable int id) {
         service.deleteAnimalById(id);
-        return service.getAllAnimals();
-   }
+        return "redirect:/animals/all";
+    }
 
 
 }

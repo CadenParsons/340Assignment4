@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
 <style>table, th, td {
   border:1px solid black;
 }
@@ -9,28 +9,34 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     <title>Table</title>
 </head>
+<a href="/animals/createForm">Create new Animal</a>
 <h1> Table of animals </h1>
 <body>
 <table>
     <tr>
+        <th>Animal ID</th>
         <th>Animal name</th>
         <th>Species</th>
         <th>Habitat</th>
     </tr>
-    <tr>
-        <td>Lion</td>
-        <td>Panthera</td>
-        <td>Savanna</td>
-    </tr>
-    <tr>
-        <td>Atlantic Bottlenose Dolphin</td>
-        <td>Tursiops</td>
-        <td>Atlantic Ocean</td>
-    </tr>
-    <tr>
-        <td>African Bush Elephant</td>
-        <td>Loxodonta</td>
-        <td>Forest, Grasslands, Woodlands, Shrubland, Wetlands</td>
+    <tr data-th-each="animal : ${animalList}">
+        <td data-th-text="${animal.id}"> </td>
+        <td data-th-text="${animal.name}"> </td>
+        <td data-th-text="${animal.species}"> </td>
+        <td data-th-text="${animal.habitat}"> </td>
+        <td>
+            <form data-th-action="@{/animals/update/{id}(id=${animal.id})}" method="get">
+                <button type="submit">Edit</button>
+            </form>
+        </td>
+        <td>
+            <a th:href="@{/animals/{/id}(id=${animal.id})}">View</a>
+        </td>
+        <td>
+            <form th:action="@{/animals/delete/{id}(id=${animal.id})}" method="post">
+                <button type="submit">Delete</button>
+            </form>
+        </td>
     </tr>
 </table>
 </body>

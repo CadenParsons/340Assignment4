@@ -26,17 +26,19 @@
 
 <div class="form-container">
     <h1>Update an animal</h1>
-<form>
+<form action="/animals/update" method="post">
+    <label for="id"> ID </label><br>
+    <input type="text" class="form-control" id="id" name="id" data-th-value="${animal.id}" readonly><br>
     <label for="name">Name of animal:</label><br>
-    <input type="text" id="name" name="name" value="Animal name"><br>
-    <label for="species">Species of animal:</label><br>
-    <input type="text" id="species" name="species" value="Species of animal"><br>
+    <input type="text" id="name" name="name" data-th-value="${animal.name}"><br>
+    <label for="species"> Species of animal:</label><br>
+    <input type="text" id="species" name="species" data-th-value="${animal.species}"><br>
     <label for="Habitat">Habitat:</label><br>
-    <input type="text" id="Habitat" name="Habitat" value="Habitat"><br>
-    <label for="Scientific Name">Scientific Name:</label><br>
-    <input type="text" id="Scientific Name" name="Scientific Name" value="Scientific Name"><br>
-    <label for="Description">Description of animal:</label><br>
-    <input type="text" id="Description" name="Description" value="Description"><br>
+    <input type="text" id="Habitat" name="Habitat" data-th-value="${animal.habitat}"><br>
+    <label for="ScientificName">Scientific Name:</label><br>
+    <input type="text" id="ScientificName" name="ScientificName" data-th-value="${animal.scientificName}"><br>
+    <label for="description">Description of animal:</label><br>
+    <input type="text" id="description" name="description" data-th-value="${animal.description}"><br>
     <input type="submit" value="Submit"><br>
 </form>
 </div>

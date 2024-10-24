@@ -1,5 +1,6 @@
 package com._assignment4.assignment4.animals;
 
+import jakarta.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -48,8 +49,9 @@ public class AnimalService {
 
     }
 
+    @Transactional
     public void deleteAnimalById(int id) {
-        animalRepository.deleteAnimalById(id);
+        animalRepository.deleteById(id);
     }
 }
 

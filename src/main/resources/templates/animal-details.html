@@ -7,9 +7,10 @@
 <head>
     <meta charset="UTF-8"/>
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-    <title>Animal details</title>
+    <title>Animal Details</title>
 </head>
-<h1>Animal details</h1>
+<h1 data-th-text="${animal.name}"> </h1>
+<a href="/animals/all">Back to all</a>
 <body>
 <table>
     <tr>
@@ -20,11 +21,11 @@
         <th>Description</th>
     </tr>
     <tr>
-        <td>Lion</td>
-        <td>Panthera</td>
-        <td>Savanna</td>
-        <td>Panthera Leo</td>
-        <td>The "King of the Jungle" lives in the harsh savanna of Africa, where they live in "Prides". There was a movie made about them called "The Lion King".</td>
+        <td data-th-text=" ${animal.name}"> </td>
+        <td data-th-text=" ${animal.species}"> </td>
+        <td data-th-text=" ${animal.habitat}"> </td>
+        <td data-th-text=" ${animal.scientificName}"> </td>
+        <td data-th-text=" ${animal.description}"> </td>
     </tr>
 
 </table>
